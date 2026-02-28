@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aadhaar Card Generator</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Aadhaar Card Generator</h1>
+
+      <div class="app-container">
+        <div class="form-container">
+          <h2>Enter Details</h2>
+          <form id="idCardForm">
+            <div class="form-group">
+              <label for="hindiName">नाम (Hindi Name)</label>
+              <input
+                type="text"
+                id="hindiName"
+                placeholder="हिंदी में नाम दर्ज करें"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="name">Full Name (English)</label>
+              <input
+                type="text"
+                id="name"
+                placeholder="Enter your full name"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="gender">Gender</label>
+              <select id="gender" required>
+                <option value="">Select</option>
+                <option value="पुरुष / MALE">Male</option>
+                <option value="महिला / FEMALE">Female</option>
+                <option value="अन्य / OTHER">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="dob">Date of Birth</label>
+              <input type="date" id="dob" required />
+            </div>
+            <div class="form-group">
+              <label for="aadhaar">Aadhaar Number</label>
+              <input
+                type="text"
+                id="aadhaar"
+                pattern="[0-9]{4} [0-9]{4} [0-9]{4}"
+                placeholder="XXXX XXXX XXXX"
+                required
+              />
+              <small>Format: XXXX XXXX XXXX</small>
+            </div>
+            <div class="form-group">
+              <label for="address">Address</label>
+              <textarea
+                id="address"
+                rows="3"
+                placeholder="Enter your full address"
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="photo">Photo</label>
+              <input type="file" id="photo" accept="image/*" required />
+            </div>
+            <button type="submit" class="btn">Generate Aadhaar Card</button>
+          </form>
+        </div>
+
+        <div class="preview-container">
+          <h2>Aadhaar Card Preview</h2>
+          <div class="preview-tabs">
+            <button id="frontTabBtn" class="tab-btn active">Front Side</button>
+            <button id="backTabBtn" class="tab-btn">Back Side</button>
+          </div>
+
+          <div id="frontPreview" class="preview-tab-content active">
+            <div id="idCardPreview" class="aadhaar-card">
+              <div class="aadhaar-background">
+                <img src="img/template.png" alt="Aadhaar Template" />
+                <div class="photo-overlay">
+                  <img
+                    id="photoPreview"
+                    src="img/placeholder.png"
+                    alt="Photo"
+                  />
+                </div>
+                <div class="hindi-name-overlay" id="hindiNamePreview">
+                  विकास सिंह
+                </div>
+                <div class="name-overlay" id="namePreview">Vikas Singh</div>
+                <div class="dob-label-overlay">जन्म तिथि/DOB:</div>
+                <div class="dob-overlay" id="dobPreview">02/12/2004</div>
+                <div class="gender-overlay" id="genderPreview">
+                  पुरुष / MALE
+                </div>
+                <div class="aadhaar-number-overlay" id="aadhaarPreview">
+                  7469 6306 1664
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="backPreview" class="preview-tab-content">
+            <div id="idCardBackPreview" class="aadhaar-card">
+              <div class="aadhaar-background">
+                <img src="img/back.png" alt="Aadhaar Back Template" />
+                <div class="address-overlay" id="addressPreview">
+                  Sample Address,<br />City, State,<br />PIN Code
+                </div>
+                <div class="aadhaar-back-overlay" id="aadhaarBackPreview">
+                  Aadhaar: 7469 6306 1664
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="button-group">
+            <button id="downloadBtn" class="btn">Download Front Side</button>
+            <button id="downloadBackBtn" class="btn">Download Back Side</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
